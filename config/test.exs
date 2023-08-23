@@ -7,7 +7,7 @@ import Config
 # Run `mix help test` for more information.
 config :pensieve, Pensieve.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "123456",
   hostname: "localhost",
   database: "pensieve_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
