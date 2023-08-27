@@ -1,17 +1,22 @@
 <h1 class="text-3xl mb-6">Memories</h1>
-
-<.information memories={@memories} />
-
+ <.information memories={@memories} />
 <.link href={~p"/memories/new"} class="text-sky-500 hover:underline">Add new</.link>
-
 <.table id="memories" rows={@memories}>
   <:col :let={memory} label="Title"><%= memory.title %></:col>
+  
   <:col :let={memory} label="Added"><%= memory_inserted_at(memory) %></:col>
+  
   <:action :let={memory}>
     <.link href={~p"/memories/#{memory}"} class="text-sky-500 hover:underline">View</.link>
+    · <.link href={~p"/memories/#{memory}/edit"} class="text-sky-500 hover:underline">Edit</.link>
     ·
-    <.link href={~p"/memories/#{memory}/edit"} class="text-sky-500 hover:underline">Edit</.link>
-    ·
-    <.link href={~p"/memories/#{memory}"} method="delete" class="text-sky-500 hover:underline">Delete</.link>
+    <.link
+      href={~p"/memories/#{memory}"}
+      method="delete"
+      class="text-sky-500 hover:underline"
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
   </:action>
 </.table>
